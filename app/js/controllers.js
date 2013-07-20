@@ -3,25 +3,18 @@
 var myApp = angular.module('myApp.controllers', []);
 
 /* Factory */
-myApp.factory('fleetTypesFactory', function($http) {
-    //Returning a promise
-    return $http.get('http://flight.apiary.io/v1/Fleet/EventTypes?apiToken=00000000-0000-0000-0000-000000000001');
+myApp.factory('SpecialMessageFactory', function() {
+    return {message: "I am shared data"};
 });
 
 
 /* Controllers */
-myApp.controller('MyCtrl1', ['$scope', 'fleetTypesFactory', function ($scope, fleetTypesFactory) {
-    
-        //This could take a long time...
-        fleetTypesFactory.success(function (data) {
-            $scope.FleetEventTypes = data.EventTypes;
-        });
+myApp.controller('MyCtrl1', ['$scope', 'SpecialMessageFactory', function ($scope, SpecialMessageFactory) {
+    $scope.specialMessage = SpecialMessageFactory;
+}]);
 
-        $scope.isEventTypesEmpty = true;
-        
-        //Watching an array for changes
-        $scope.$watch('FleetEventTypes', function() {
-            $scope.isEventTypesEmpty = ($scope.FleetEventTypes == null);
-        }, false);
-    }]);
+myApp.controller('MyCtrl2', ['$scope', 'SpecialMessageFactory', function($scope, SpecialMessageFactory) {
+    $scope.warningMessage = SpecialMessageFactory;
+}
+]);
  
