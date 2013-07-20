@@ -9,9 +9,8 @@
     
     
     <div ng-controller="MyCtrl1">
-        <div style="background-color: green; color:white; width:300px;" ng-show="!status.buildFailed">Everything is OK</div>
-        <div style="background-color: red; width:300px;" ng-show="status.buildFailed">Warning, build broke!</div>
-        <input type="button" ng-click="RobJustPushedSomethingToGit()" value="Rob pushes his code" />
+        <div ng-show="isEventTypesEmpty">Loading please wait... </div>
+        <div data-ng-repeat="eventtype in FleetEventTypes">{{ eventtype.Name }}</div>
     </div>
 
 
