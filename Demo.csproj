@@ -79,6 +79,7 @@
     <Content Include="app\lib\angular\version.txt" />
     <Content Include="app\partials\partial1.html" />
     <Content Include="app\partials\partial2.html" />
+    <Content Include="app\partials\SubMiniPartial.html" />
     <Content Include="config\karma-e2e.conf.js" />
     <Content Include="config\karma.conf.js" />
     <Content Include="scripts\web-server.js" />
