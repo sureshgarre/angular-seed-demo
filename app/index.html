@@ -1,18 +1,24 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
+    <meta charset="utf-8">
+    <title>My AngularJS App</title>
+    <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
-    
-    
+
+
     <div ng-controller="MyCtrl1">
         <div ng-show="isEventTypesEmpty">Loading please wait... </div>
-        Filter by Name: <input type="text" ng-model="search.Name"/> <br />
-        Filter by ID: <input type="text" data-ng-model="search.Id"/><br /> <br/>
-        <div data-ng-repeat="eventtype in FleetEventTypes | filter:search">{{ eventtype.Name | truncatetext:10 }}</div>
+        Filter by Name:
+        <input type="text" id="filterByName" ng-model="search.Name" />
+        <br />
+        Filter by ID:
+        <input type="text" data-ng-model="search.Id" /><br />
+        <br />
+        <div class="allTheTypes">
+            <div data-ng-repeat="eventtype in FleetEventTypes | filter:search">{{ eventtype.Name | truncatetext:10 }}</div>
+        </div>
     </div>
 
 

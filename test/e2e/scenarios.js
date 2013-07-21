@@ -2,44 +2,30 @@
 
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
 
-describe('my app', function() {
+describe('my app', function () {
 
-  beforeEach(function() {
-    browser().navigateTo('../../app/index.html');
-  });
-
-
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    expect(browser().location().url()).toBe("/view1");
-  });
-
-
-  describe('view1', function() {
-
-    beforeEach(function() {
-      browser().navigateTo('#/view1');
+    beforeEach(function () {
+        browser().navigateTo('../../app/index.html');
+        sleep(3);
     });
 
 
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element('[ng-view] p:first').text()).
-        toMatch(/partial for view 1/);
-    });
 
-  });
+    it('Textbox should be empty when page loads', function () {
 
-
-  describe('view2', function() {
-
-    beforeEach(function() {
-      browser().navigateTo('#/view2');
+        expect(element('input#filterByName').val()).toBe('');
     });
 
 
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element('[ng-view] p:first').text()).
-        toMatch(/partial for view 2/);
+    it('Textbox should reflect filter value', function () {
+        input('search.Name').enter('test');
+        sleep(1);
+        expect(element('input#filterByName').val()).toBe('test');
     });
-
-  });
+    
+    it('Options filter test', function () {
+        input('search.Name').enter('Option');
+        sleep(1);
+        expect(repeater('.allTheTypes div').count()).toEqual(2);
+    });
 });
