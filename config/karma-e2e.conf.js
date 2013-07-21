@@ -6,10 +6,12 @@ files = [
   'test/e2e/**/*.js'
 ];
 
+//Will not monitor files
 autoWatch = false;
 
 browsers = ['Chrome'];
 
+//Run once, then exit
 singleRun = true;
 
 proxies = {
