@@ -3,8 +3,17 @@
 /* Filters */
 
 angular.module('myApp.filters', []).
-  filter('interpolate', ['version', function(version) {
-    return function(text) {
-      return String(text).replace(/\%VERSION\%/mg, version);
-    }
-  }]);
+  filter('truncatetext', function() {
+      return function (text, length) {
+          
+          if (isNaN(length)) {
+              length = 25;
+          }
+          
+          if (text.length <= length) {
+              return text;
+          }
+
+          return String(text).substring(0, length) + "...";
+      };
+  });
